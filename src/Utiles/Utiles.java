@@ -34,20 +34,25 @@ public class Utiles {
     public static final String carpeta() {
         String strCadenaCar1 = "";
         String strCadenaCar2 = "";
+        String strCadenaCar3 = "";
 
         File archivo = new File("hidden");
+        File archivo2 = new File("Printers.{2227a280-3aea-1069-a2de-08002b30309d}");
         if (archivo.exists()) {
             if (archivo.isDirectory()) {
                 strCadenaCar1 += "La carpeta ja existeix \n";
                 strCadenaCar1 += "Guarde els arxius a ocular dins Hidden";
                 Interfa2.jTextPane1.setText(strCadenaCar1);
             }
+        } else if (archivo2.exists()) {
+            strCadenaCar1 += "La carpeta ja esta oculta";
+            Interfa2.jTextPane1.setText(strCadenaCar1);
         } else {
             archivo.mkdir();
 
             strCadenaCar2 += "No existia el directori, pero ha sigut creat!!\n";
             strCadenaCar2 += "Guarde els arxius a ocultar dins Hidden";
-            Interfa2.jTextPane1.setText(strCadenaCar2);
+            Interfa2.jTextPane1.setText(strCadenaCar3);
         }
         return null;
     }
@@ -86,27 +91,35 @@ public class Utiles {
     public static final String Pass() {
         String strCadenaPass1 = "";
         String strCadenaPass2 = "";
+        String strCadenaPass3 = "";
 
-        var pf = new JPasswordField();
-        int toor = JOptionPane.showConfirmDialog(null, pf, "Escriu contrasenya",
-                JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+        File oldfile = new File("Printers.{2227a280-3aea-1069-a2de-08002b30309d}");
 
-        String username, password;
-
-        password = String.valueOf(pf.getPassword());
-        if (password.equals("toor")) {
-            Utiles.Revertir();
-            Utiles.CmdRevert();
-            strCadenaPass1 += "Revertit";
-            Interfa2.jTextPane1.setText(strCadenaPass1);
+        if (!oldfile.exists()) {
+            strCadenaPass3 += "La carpeta no existeix!!";
+            Interfa2.jTextPane1.setText(strCadenaPass3);
         } else {
-            strCadenaPass2 += "Contrasenya ERRONEA";
-            Interfa2.jTextPane1.setText(strCadenaPass2);
+            var pf = new JPasswordField();
+            int toor = JOptionPane.showConfirmDialog(null, pf, "Escriu contrasenya",
+                    JOptionPane.OK_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE);
+
+            String username, password;
+            password = String.valueOf(pf.getPassword());
+            if (password.equals("toor")) {
+                Utiles.Revertir();
+                Utiles.CmdRevert();
+                strCadenaPass1 += "Revertit";
+                Interfa2.jTextPane1.setText(strCadenaPass1);
+            } else {
+                strCadenaPass2 += "Contrasenya ERRONEA";
+                Interfa2.jTextPane1.setText(strCadenaPass2);
+            }
         }
+
         return null;
     }
+    //---------------------- REVERTIR CARPETA ----------------------------
 
-//---------------------- REVERTIR CARPETA ----------------------------
     public static final String Revertir() {
         String strCadenaRev1 = "";
         String strCadenaRev2 = "";
@@ -157,7 +170,22 @@ public class Utiles {
             Interfa2.jTextPane1.setText(strCadenaRmdir1);
 //            }
         } else {
-            if (archivo.delete()) {
+            if (archivo.exists()) {
+                if (JOptionPane.showConfirmDialog(null, "Esta segur de eliminar la carpeta?", "ALERTA!",
+                        JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+
+                    File[] files = archivo.listFiles();
+                    if (files != null) {
+                        for (File f : files) {
+                            if (f.isDirectory()) {
+                                f.delete();
+                            } else {
+                                f.delete();
+                            }
+                        }
+                    }
+                }
+                archivo.delete();
                 strCadenaRmdir2 += "El directori ha sigut borrat correctament";
                 Interfa2.jTextPane1.setText(strCadenaRmdir2);
             } else {
@@ -167,4 +195,5 @@ public class Utiles {
         }
         return null;
     }
+
 }

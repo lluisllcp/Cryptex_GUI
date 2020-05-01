@@ -38,8 +38,8 @@ public class Interfa2 extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextPane1 = new javax.swing.JTextPane();
         jLabelAutor = new javax.swing.JLabel();
-        jLabelTitol = new javax.swing.JLabel();
         jLabelAny = new javax.swing.JLabel();
+        jLabelTitol = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -125,15 +125,15 @@ public class Interfa2 extends javax.swing.JFrame {
         jLabelAutor.setText("By LLCP");
         getContentPane().add(jLabelAutor, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
-        jLabelTitol.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
-        jLabelTitol.setForeground(new java.awt.Color(103, 172, 104));
-        jLabelTitol.setText("asdasdasd");
-        getContentPane().add(jLabelTitol, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 16, 240, 60));
-
         jLabelAny.setFont(new java.awt.Font("Alef", 1, 18)); // NOI18N
         jLabelAny.setForeground(new java.awt.Color(103, 172, 104));
         jLabelAny.setText("2020");
         getContentPane().add(jLabelAny, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, -1, -1));
+
+        jLabelTitol.setFont(new java.awt.Font("Alef", 1, 36)); // NOI18N
+        jLabelTitol.setForeground(new java.awt.Color(103, 172, 104));
+        jLabelTitol.setText("CryPt3X");
+        getContentPane().add(jLabelTitol, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, -1, -1));
 
         jLabel22.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/fondoo.jpg"))); // NOI18N
         jLabel22.setText("Crear Carpeta");

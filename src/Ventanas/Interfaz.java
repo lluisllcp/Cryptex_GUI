@@ -5,8 +5,6 @@
  */
 package Ventanas;
 
-import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 
 /**
@@ -18,7 +16,7 @@ public class Interfaz extends javax.swing.JFrame {
     /**
      * Creates new form Interfaz
      */
-    public Interfaz() {
+    public  Interfaz() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
